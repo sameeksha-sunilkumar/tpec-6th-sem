@@ -1,41 +1,38 @@
 #include <stdio.h>
 
-void printArray(int arr[], int n) {
-    for (int i = 0; i < n; i++) {
+void printArray(int arr[], int N) {
+    for (int i = 0; i < N; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 }
 
-void insertionSort1(int n, int arr[]) {
-    int key = arr[n - 1];  // Last element (unsorted)
-    int i = n - 2;
-
-    // Shift elements to the right until the correct position for key is found
-    while (i >= 0 && arr[i] > key) {
-        arr[i + 1] = arr[i];  // Shift element right
-        i--;
+void insertionSort(int arr[], int N) {
+    for (int i = 1; i < N; i++) {
+        int key = arr[i];
+        int j = i - 1;
         
-        // Print array after each shift
-        printArray(arr, n);
-    }
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
 
-    arr[i + 1] = key;  // Insert the key in its correct position
-    
-    // Print final sorted array
-    printArray(arr, n);
+        // Print array after each iteration
+        printArray(arr, N);
+    }
 }
 
 int main() {
-    int n;
-    scanf("%d", &n);
-    int arr[n];
+    int N;
+    scanf("%d", &N);
+    int arr[N];
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < N; i++) {
         scanf("%d", &arr[i]);
     }
 
-    insertionSort1(n, arr);
+    insertionSort(arr, N);
     
     return 0;
 }
