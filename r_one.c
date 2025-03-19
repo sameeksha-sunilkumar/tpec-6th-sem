@@ -1,42 +1,51 @@
-#include <math.h>
 #include <stdio.h>
+
+void printArray(int arr[], int N) {
+	int i;
+    for ( i = 0; i < N; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
 void insertionSort(int arr[], int N) {
-    int i,j;
-    for (i = 1; i < N; i++) {
+	int i;
+    for ( i = 1; i < N; i++) {
         int key = arr[i];
         int j = i - 1;
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
-            j = j - 1;
+            j--;
         }
         arr[j + 1] = key;
+
+        // Print array after each pass
+        printf("Step %d: ", i);
+        printArray(arr, N);
     }
 }
 
 int main() {
-	int i, N;
+    int N;
+    
     printf("Enter the number of elements: ");
     scanf("%d", &N);
-    
-    int arr[N]; 
+
+    int arr[N];
+    int i;
 
     printf("Enter %d elements: ", N);
-    for (i = 0; i < N; i++) {
+    for ( i = 0; i < N; i++) {
         scanf("%d", &arr[i]);
     }
+
     printf("Unsorted array: ");
-    for ( i = 0; i < N; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+    printArray(arr, N);
 
     insertionSort(arr, N);
 
     printf("Sorted array: ");
-    for ( i = 0; i < N; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+    printArray(arr, N);
 
     return 0;
 }
