@@ -20,10 +20,11 @@ int main() {
         scanf("%d", &cost[i]);
     }
     insertionSort(cost, n);
-    while (avail + cost[count] <= k && count < n) {
-        avail += cost[count];
-        count++;
-    }
-    printf("%d\n", count);
+    while(avail<=k) 
+{ 
+    avail+=cost[count];  
+    count++; 
+}   
+printf("%d\n",count-1);    
     return 0;
 }
