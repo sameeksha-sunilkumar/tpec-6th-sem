@@ -22,7 +22,7 @@ int main() {
     insertionSort(calories, n);
     long long sum = 0;
     for (int i = 0; i < n; i++) 
-        sum += (long long)calories[i] * (1LL << i);
+        sum += (long long)calories[i] * (1LL << i); // or ((int)pow(2,i)) instead of (1LL<<i)
     printf("%lld\n", sum);
     return 0;
 }
